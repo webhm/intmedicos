@@ -9,11 +9,8 @@ export function encryptId (id) {
 
 // Función para descifrar un mensaje
 export function decryptId (encryptedId) {
-    // Revertir el reemplazo específico
-    const originalEncryptedString = encryptedId.replace(/%2B/g, '+').replace(/%2F/g, '/').replace(/%3D/g, '=');
-
 // Decodificar y desencriptar
-    const decodedEncryptedString = decodeURIComponent(decodeURIComponent(originalEncryptedString));
+    const decodedEncryptedString = decodeURIComponent(decodeURIComponent(encryptedId));
     const decrypted = CryptoJS.AES.decrypt(decodedEncryptedString, secretKey);
     return decrypted.toString(CryptoJS.enc.Utf8);
 }
