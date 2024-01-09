@@ -8,11 +8,10 @@ useMyPatientsStore = defineStore({
     id: 'myPatients',
     getters: {},
     actions: {
-        async getPatients(start, length, isResident) {
+        async getPatients(start, length) {
             //get data from backend
             try {
-                console.log('is resident', isResident);
-                const response = await getMyPatients(start, length, isResident);
+                const response = await getMyPatients(start, length);
                 console.log('response getMy patients', response);
                 if (response.status) {
                     this.consulted_patients = response.dataInter;
@@ -31,11 +30,10 @@ useMyPatientsStore = defineStore({
             }
             //this.items = [];
         },
-        async searchPatients(start, length, term, isResident) {
+        async searchPatients(start, length, term) {
             //get data from backend
             try {
-                console.log('is resident', isResident);
-                const response = await searchMyPatients(start,length, term, isResident);
+                const response = await searchMyPatients(start,length, term);
                 console.log('response getMy patients', response);
                 if (response.status) {
                     this.consulted_patients = response.dataInter;

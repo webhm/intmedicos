@@ -73,10 +73,10 @@ onMounted(async () => {
         <div class="row mt-4">
           <h5 style=" color: #44bdf0; font-size: 20px; font-weight: 500;">Bienvenido/a</h5><br>
         </div>
-        <div class="row">
-          <p class="title-user" style=" color: #05305d; font-size: 21px; font-weight: 600;">
-            Dr/a. {{ user?.name }}</p><br>
-        </div>
+<!--        <div class="row">-->
+<!--          <p class="title-user" style=" color: #05305d; font-size: 21px; font-weight: 600;">-->
+<!--            Dr/a. {{ user?.name }}</p><br>-->
+<!--        </div>-->
         <div class="row my-3">
           <p class="black-colorv2" style="font-size: 18px;">!Hoy será un gran día!</p>
         </div>
@@ -86,8 +86,7 @@ onMounted(async () => {
     <div class="container m-auto d-block">
       <div class="row my-1 my-md-5 justify-content-center">
         <!--columna de iconos-->
-        <div class=" col-6 col-md-3 d-block pb-5 "
-             v-if="authStore.hasRole('PERFIL_MEDICO_PACIENTES') || authStore.hasRole('PERFIL_MEDICO_RESIDENTES')">
+        <div class=" col-6 col-md-3 d-block pb-5 ">
           <div class="icon-img cursor-pointer" @click="goTo('mis-pacientes')">
             <div class="row d-block img-border">
               <img class="img-icon-color" src="@/assets/mis-pacientes-blanco.png"
@@ -99,7 +98,7 @@ onMounted(async () => {
             </p>
           </div>
         </div>
-        <div class=" col-6 col-md-3 d-block pb-5 " v-if="authStore.hasRole('PERFIL_MEDICO_RESULTADOS')">
+        <div class=" col-6 col-md-3 d-block pb-5 ">
           <div class="icon-img cursor-pointer" @click="goTo('resultados-imagen-y-laboratorio-medicos')">
             <div class="row d-block img-border">
               <img class="img-icon-color" src="@/assets/resultados-blancos.png"
@@ -139,27 +138,6 @@ onMounted(async () => {
 <!--            </p>-->
 <!--          </div>-->
 <!--        </div>-->
-      </div>
-      <div class="row mb-4 mb-md-2 justify-content-center  pb-5 my-2">
-        <!--columna de text-->
-        <div class=" col-12 col-md-4 my-3">
-          <div class="row mt-2 mt-md-5 justify-content-center">
-            <a href="https://www.hospitalmetropolitano.org/es/terminos-condiciones-y-uso-de-medios" target="_blank">
-              <h5 class="title-terminos">
-                Términos y Condiciones
-              </h5>
-            </a>
-          </div>
-        </div>
-        <div class=" col-12 col-md-4 my-3">
-          <div class="row mt-2 mt-md-5 justify-content-center">
-            <a href="https://www.hospitalmetropolitano.org/es/politicas-de-privacidad" target="_blank">
-              <h5 class="title-terminos">
-                Políticas de Privacidad
-              </h5>
-            </a>
-          </div>
-        </div>
       </div>
     </div>
   </div>

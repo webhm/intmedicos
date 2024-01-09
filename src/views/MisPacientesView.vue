@@ -27,9 +27,8 @@ const search = async () => {
   if (isLoadingDealers.value || isLoadingConsulted.value) return;
   isLoadingDealers.value = true;
   isLoadingConsulted.value = true;
-  console.log('user', user.value);
-  console.log('authStore', authStore.hasRole('PERFIL_MEDICO_RESIDENTES'));
-  await myPatientsStore.searchPatients(0, 1000, searchTerm.value, authStore.hasRole('PERFIL_MEDICO_RESIDENTES'));
+
+  await myPatientsStore.searchPatients(0, 1000, searchTerm.value);
   isLoadingDealers.value = false;
   isLoadingConsulted.value = false;
 };
@@ -73,9 +72,7 @@ onMounted(async () => {
   if (consulted_patients.value.length < 1) {
     isLoadingConsulted.value = true;
   }
-  console.log('user', user.value);
-  console.log('authStore', authStore.hasRole('PERFIL_MEDICO_RESIDENTES'));
-  await myPatientsStore.getPatients(0, 1000, authStore.hasRole('PERFIL_MEDICO_RESIDENTES'));
+  await myPatientsStore.getPatients(0, 1000);
   isLoadingDealers.value = false;
   isLoadingConsulted.value = false;
 });
@@ -164,9 +161,7 @@ onMounted(async () => {
                     <button class="nav-link nav-hm pl-0" id="lab-tab" data-toggle="tab"
                             :class="{'active': myPatientsStore.activeTab === 0}" @click="myPatientsStore.activeTab = 0"
                             data-target="#lab" type="button" role="tab" aria-controls="lab"
-                            aria-selected="true">{{
-                        authStore.hasRole("PERFIL_MEDICO_RESIDENTES") ? "Emergencia" : "Tratante"
-                      }} <span class="bg-number">{{ total_dealer_patients }}</span>
+                            aria-selected="true"> Emergencia <span class="bg-number">{{ total_dealer_patients }}</span>
                     </button>
                   </li>
                   <li class="nav-item tab-hm" role="presentation">
@@ -174,7 +169,7 @@ onMounted(async () => {
                             :class="{'active': myPatientsStore.activeTab === 1}" @click="myPatientsStore.activeTab = 1"
                             data-target="#image" type="button" role="tab" aria-controls="image"
                             aria-selected="false">
-                      {{ authStore.hasRole("PERFIL_MEDICO_RESIDENTES") ? "Hospitalización" : "Interconsultado" }}
+                      Hospitalización
                       <span class="bg-number">{{ total_consulted_patients }}</span>
                     </button>
                   </li>
@@ -252,8 +247,7 @@ onMounted(async () => {
                           <div class=" my-3 py-3  text-center">
                             <h4 class="center text-search">
                               <template v-if="searchTerm === ''">
-                                No tienes pacientes
-                                {{ authStore.hasRole("PERFIL_MEDICO_RESIDENTES") ? "en emergencia" : "tratantes" }}
+                                No tienes pacientes en emergencia
                               </template>
                               <template v-else>
                                 No hay resultados para el criterio de busqueda
@@ -326,9 +320,7 @@ onMounted(async () => {
                           <div class=" my-3 py-3  text-center">
                             <h4 class="center text-search">
                               <template v-if="searchTerm === ''">
-                                No tienes pacientes {{
-                                  authStore.hasRole("PERFIL_MEDICO_RESIDENTES") ? "en hospitalización" : "interconsultados"
-                                }}
+                                No tienes pacientes en hospitalización
                               </template>
                               <template v-else>
                                 No hay resultados para el criterio de busqueda

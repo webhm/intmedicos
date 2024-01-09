@@ -16,8 +16,7 @@ const goTo = async (name) => {
 <template>
   <div class="row my-5 justify-content-center">
     <!--columna de iconos-->
-    <div class=" col-6 col-md-3 d-block pb-5"
-         v-if="authStore.hasRole('PERFIL_MEDICO_PACIENTES') || authStore.hasRole('PERFIL_MEDICO_RESIDENTES')">
+    <div class=" col-6 col-md-3 d-block pb-5">
       <div class="icon-img cursor-pointer" @click="goTo('mis-pacientes')">
         <div class="row d-block img-border">
           <img class="img-icon-color" src="@/assets/mis-pacientes-blanco.png" alt=" icon">
@@ -25,11 +24,11 @@ const goTo = async (name) => {
                alt=" icon">
           <br>
         </div>
-        <p class="d-block mt-3 text-icon-color py-2">Mis Pacientes
+        <p class="d-block mt-3 text-icon-color py-2">Pacientes
         </p>
       </div>
     </div>
-    <div class=" col-6 col-md-3 d-block pb-5" v-if="authStore.hasRole('PERFIL_MEDICO_RESULTADOS')">
+    <div class=" col-6 col-md-3 d-block pb-5">
       <div class="icon-img cursor-pointer"
            @click="goTo('resultados-imagen-y-laboratorio-medicos')">
         <div class="row d-block img-border">
