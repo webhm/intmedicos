@@ -45,32 +45,6 @@ const goTo = async (name) => {
         </p>
       </div>
     </div>
-    <div class=" col-6 col-md-3 d-block pb-5 " v-if="authStore.hasRole('PERFIL_MEDICO_BDOCU')">
-      <div class="icon-img cursor-pointer" style="text-decoration: none"
-           @click="goTo('biblioteca-de-credenciales')"
-        >
-        <div class="row d-block img-border">
-          <img class="img-icon-color" src="@/assets/biblioteca-blancov2.png" alt=" icon">
-          <img class="img-icon-color color-margin" src="@/assets/bibliotecav2.png"
-               alt=" icon">
-          <br>
-        </div>
-        <p class="d-block mt-3 text-icon-color">Biblioteca de<br>Credenciales
-        </p>
-      </div>
-    </div>
-    <div class=" col-6 col-md-3 d-block pb-5 " v-if="authStore.hasRole('PERFIL_MEDICO_HONORARIOS')">
-      <div class="icon-img cursor-pointer" @click="goTo('honorarios')">
-        <div class="row d-block img-border">
-          <img class="img-icon-color" src="@/assets/honorarios-blancos.png" alt=" icon">
-          <img class="img-icon-color color-margin" src="@/assets/honorarios.png"
-               alt=" icon">
-          <br>
-        </div>
-        <p class="d-block mt-3 text-icon-color py-2">Mis Honorarios
-        </p>
-      </div>
-    </div>
   </div>
 </template>
 
