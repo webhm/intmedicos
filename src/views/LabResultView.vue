@@ -146,7 +146,7 @@ const getUrl = async (url) => {
             <template v-else>
               <template v-if="isAvailable">
                 <pdf-viewer :url="src" :nhc="nhc" :name="'resultado_laboratorio'" :id="url"
-                            :type="'laboratorio'" />
+                            :type="'laboratorio'" :share="false"/>
               </template>
               <template v-else>
                 <p class="center text-search">Resultado de laboratorio no disponible</p>

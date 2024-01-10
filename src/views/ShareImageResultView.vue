@@ -108,7 +108,7 @@ const getUrl = (url) => {
             <template v-else>
               <template v-if="isAvailable">
                 <pdf-viewer :url="src" :nhc="nhc" :name="'resultado_imagen'" :type="'imagen'"
-                            :id="url" />
+                            :id="url" :share="true"/>
               </template>
               <template v-else>
                 <p>Resultado no disponible</p>

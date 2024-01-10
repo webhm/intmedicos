@@ -12,6 +12,7 @@ const pdfRef = ref(null);
 const props = defineProps(["url", "name", "type", "nhc", "id"]);
 const src = ref(props.url);
 const id = ref(props.id);
+const share = ref(props.share);
 const name = ref(props.name);
 const pageType = ref(props.type);
 const nhc = ref(props.nhc);
@@ -132,7 +133,7 @@ onMounted(async () => {
     </div>
     <div class="container">
       <div class="row justify-content-end my-1 row-img">
-        <div class="col-2 col-md-1 col-img">
+        <div class="col-2 col-md-1 col-img" v-if="!share">
           <a class="icon-img cursor-pointer" title="Compartir por whatsapp" target="_blank"
              @click="registerWhatsappShare()"
              :href="`https://api.whatsapp.com/send?text=Te%20comparto%20mi%20${stringVal}%20en%20el%20siguiente%20enlace:%20${shareLink}`">
@@ -143,7 +144,7 @@ onMounted(async () => {
             </div>
           </a>
         </div>
-        <div class="col-2 col-md-1 col-img">
+        <div class="col-2 col-md-1 col-img" v-if="!share">
 
           <a class="icon-img cursor-pointer" title="Compartir por email" target="_blank" @click="registerEmailShare()"
              :href="`mailto:an@email.com?subject=${subject}&body=Te%20comparto%20mi%20${stringVal}%20en%20el%20siguiente%20enlace:%20${shareLink}`">
