@@ -34,26 +34,26 @@ const hashCode = (string) => {
 const hash = computed(() => hashCode(user.value?.name ? user.value?.name : "123456"));
 
 onMounted(async () => {
-  console.log('user', user.value);
-  set({
-    user_email: user.value.username,
-    user_id: user.value.username,
-    user_display_name: user.value.name,
-    user_type: 'AZURE AD'
-  });
+  // console.log('user', user.value);
+  // set({
+  //   user_email: user.value.username,
+  //   user_id: user.value.username,
+  //   user_display_name: user.value.name,
+  //   user_type: 'AZURE AD'
+  // });
   screenview('Dashbooard');
-  event('logged_user_email', {
-    value: user.value.username,
-  });
-  event('logged_user_id', {
-    value: user.value.username,
-  });
-  event('logged_user_display_name', {
-    value: user.value.name,
-  });
-  event('logged_user_type', {
-    value: 'AZURE AD',
-  });
+  // event('logged_user_email', {
+  //   value: user.value.username,
+  // });
+  // event('logged_user_id', {
+  //   value: user.value.username,
+  // });
+  // event('logged_user_display_name', {
+  //   value: user.value.name,
+  // });
+  // event('logged_user_type', {
+  //   value: 'AZURE AD',
+  // });
 });
 
 </script>

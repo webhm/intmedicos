@@ -135,6 +135,7 @@ const router = createRouter({
                 roles: ["PERFIL_MEDICO_PACIENTES", "PERFIL_MEDICO_RESIDENTES"]
             }
         },
+
         // share patient zerofootprint view / medic
         {
             path: "/compartir/zerofootprint/:nhc",

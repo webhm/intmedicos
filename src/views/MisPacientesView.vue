@@ -54,7 +54,6 @@ const goToPatientDetail = async (patient) => {
     event('see_patient', {
       patient_name: patient.NOMBRE_PACIENTE,
       patient_nhc: patient.HC,
-      user_name: user.value.name
     });
     let encryptedNHC = encryptId(patient.HC);
     router.push({name: "detalle-paciente", params: {nhc: encryptedNHC}}).catch((e) => console.log("e", e));

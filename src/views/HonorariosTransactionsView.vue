@@ -36,7 +36,7 @@ const goToDetail = async (item) => {
   console.log('item transaction', item);
   event('see_transaction', {
     account: item.CTA_BANCARIA,
-    user_name: user.value.name
+    user_name: user.value?.name
   });
   router.push({
     name: "honorarios-transaccion", params: {

@@ -27,7 +27,7 @@ const goToDetail = async () => {
   event('see_account_statement', {
     startDate: startDate.value,
     endDate: endDate.value,
-    user_name: user.value.name
+    user_name: user.value?.name
   });
   router.push({
     name: "honorarios-account-statement", params: {

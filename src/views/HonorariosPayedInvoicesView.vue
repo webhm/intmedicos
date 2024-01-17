@@ -44,7 +44,7 @@ const goToDetail = async (item) => {
   console.log('item invoice', item);
   event('see_payed_invoice', {
     invoice: item.FACTURA,
-    user_name: user.value.name
+    user_name: user.value?.name
   });
   router.push({
     name: "honorarios-factura-pagada", params: {
