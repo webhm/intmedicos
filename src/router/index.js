@@ -2,6 +2,7 @@ import {createRouter, createWebHistory} from "vue-router";
 import IngresoMedicosView from "../views/IngresoMedicosView.vue";
 import DashboardView from "../views/DashboardView.vue";
 import ResultadosImagenLaboratorioMedicosView from "../views/ResultadosImagenLaboratorioMedicosView.vue";
+import V2ResultadosImagenLaboratorioMedicosView from "../views/V2ResultadosImagenLaboratorioMedicosView.vue";
 import BusquedaResultadosImagenLaboratorioMedicosView
     from "../views/BusquedaResultadosImagenLaboratorioMedicosView.vue";
 import LabResultView from "../views/LabResultView.vue";
@@ -20,6 +21,7 @@ import V2ShareZeroItemView from "../views/V2ShareZeroItemView.vue";
 import BuzonDeSugerenciasView from "../views/BuzonDeSugerenciasView.vue";
 import MiPerfilMedicoView from "../views/MiPerfilMedicoView.vue";
 import DetallePacienteView from "../views/DetallePacienteView.vue";
+import V2DetallePacienteView from "../views/V2DetallePacienteView.vue";
 import MisPacientesView from "../views/MisPacientesView.vue";
 import BibliotecaView from "../views/BibliotecaView.vue";
 import HonorariosView from "../views/HonorariosView.vue";
@@ -79,6 +81,18 @@ const router = createRouter({
             path: language === "es" ? "/mis-pacientes/:nhc" : "/my-patients/:nhc",
             name: "detalle-paciente",
             component: DetallePacienteView,
+            props: true,
+            meta: {
+                authRequired: false,
+                userType: "generic",
+                roles: ["PERFIL_MEDICO_PACIENTES", "PERFIL_MEDICO_RESIDENTES"]
+            }
+        },
+        // //patient detail
+        {
+            path: language === "es" ? "/mis-pacientes/paciente/:nhc" : "/my-patients/patient/:nhc",
+            name: "detalle-paciente-v2",
+            component: V2DetallePacienteView,
             props: true,
             meta: {
                 authRequired: false,
@@ -262,6 +276,18 @@ const router = createRouter({
             path: language === "es" ? "/resultados-imagen-y-laboratorio/:nhc" : "/image-and-lab-results/:nhc",
             name: "resultados-paciente-imagen-y-laboratorio-medicos",
             component: ResultadosImagenLaboratorioMedicosView,
+            props: true,
+            meta: {
+                authRequired: false,
+                userType: "generic",
+                roles: ["PERFIL_MEDICO_RESULTADOS"]
+            }
+        },
+        // //patients medic results
+        {
+            path: language === "es" ? "/resultados/paciente/:nhc" : "/results/patient/:nhc",
+            name: "resultados-paciente-imagen-y-laboratorio-medicos-v2",
+            component: V2ResultadosImagenLaboratorioMedicosView,
             props: true,
             meta: {
                 authRequired: false,
