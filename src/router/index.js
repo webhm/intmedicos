@@ -90,7 +90,7 @@ const router = createRouter({
         },
         // //patient detail
         {
-            path: language === "es" ? "/mis-pacientes/paciente/:nhc" : "/my-patients/patient/:nhc",
+            path: language === "es" ? "/paciente/:nhc" : "/patient/:nhc",
             name: "detalle-paciente-v2",
             component: V2DetallePacienteView,
             props: true,
