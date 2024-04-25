@@ -6,7 +6,7 @@ import {useRouter} from "vue-router";
 import {event, screenview} from 'vue-gtag';
 import {useMyLibraryStore} from "../stores/myLibrary";
 import DropZone from "../components/DropZone.vue";
-import {checkFolder, createFolder, deleteFile, uploadFile} from "../services/library";
+import {checkFolder, createFolder, deleteFile, uploadFile,checkMedic} from "../services/library";
 import {useNotification} from "@kyvg/vue3-notification";
 import SmallBox from "../components/SmallBox.vue";
 import {getFolders} from "../services/library";
@@ -385,7 +385,18 @@ onMounted(async () => {
   for (let i = 2020; i <= actual; i++) {
     years.value.push(i);
   }
-  refresh();
+  const responseCheckMedic = await checkMedic();
+  console.log('responseCheckMedic', responseCheckMedic);
+  if(responseCheckMedic.status){
+    refresh();
+  }else{
+    notify({
+      title: "Hubo un error con el perfil",
+      text: responseCheckMedic.error,
+      type: "error"
+    });
+    router.back();
+  }
 });
 
 class UploadableFile {
