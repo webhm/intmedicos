@@ -186,7 +186,7 @@ const goToZeroCtrlItem = async (item) => {
   const encryptedId = encryptId(item.ID_ESTUDIO);
   let url = router.resolve({
     name: "medic-patient-zerofootprint-item-view",
-    params: {id: encryptedId },
+    params: {id: encryptedId},
     query: {prev: "resultados"}
   });
   window.open(url.href, "_blank");
@@ -207,7 +207,7 @@ const goToImageResult = async (result) => {
 
   await router.push({
     name: "medic-image-result-view",
-    params: {url: split[3], nhc: encryptedNHC.value },
+    params: {url: split[3], nhc: encryptedNHC.value},
     query: {prev: "resultados"}
   });
 };
@@ -411,8 +411,8 @@ onMounted(async () => {
                               <p class="title-results"><b>{{ labResult?.ORIGEN }}</b>
                                 <span class="p-2 mx-2 pill" v-if="isWithin24Hours(labResult?.fecha_)"
                                       :class="{
-                                  'gray':labResult?.IsOrderValidated === 'false' || !labResult?.IsOrderValidated,
-                                   'orange':labResult?.IsOrderValidated || labResult?.IsOrderValidated === 'true'
+                                  'gray':labResult?.IsOrderValidated === 'false' || !labResult?.IsOrderValidated || labResult?.IsOrderValidated === false,
+                                   'orange':labResult?.IsOrderValidated === true || labResult?.IsOrderValidated === 'true'
                                 }">
                                   {{ getWord(labResult?.IsOrderValidated) }}
                                 </span>
@@ -506,7 +506,9 @@ onMounted(async () => {
                                 :key="imageResultKey">
                               <div class="col-9">
                                 <p class="title-results"><b>{{ imageResult?.ESTUDIO }}</b>
-                                  <span class="p-2 mx-2 pill" v-if="isWithin24Hours(imageResult?.fecha_)">Nuevo</span>
+                                  <span class="p-2 mx-2 pill orange" v-if="isWithin24Hours(imageResult?.fecha_)">
+                                    Nuevo
+                                  </span>
                                 </p>
                                 <p class="text-results">{{ imageResult?.FECHA }}</p>
                                 <p class="text-results">
