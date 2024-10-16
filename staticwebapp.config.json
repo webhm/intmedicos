@@ -7,5 +7,10 @@
       "/*.{css,scss,js}",
       "/pdfjs/*.{js}"
     ]
+  },
+  "networking": {
+    "allowedIpRanges": [
+      "190.216.213.84/32"
+    ]
   }
 }
